@@ -1,0 +1,56 @@
+
+void setup()
+{
+	pinMode(13, INPUT);
+    pinMode(12, INPUT);
+    pinMode(8, INPUT);
+    pinMode(7, INPUT);
+	pinMode(4, INPUT);
+  	pinMode(6, OUTPUT);
+    pinMode(5, OUTPUT);
+    
+}
+
+void loop()
+{
+  
+ int ir1, ir2, ir3, ir4, ir5;
+  
+	ir1 = digitalRead(13);
+    ir2 = digitalRead(12);
+    ir3 = digitalRead(8);
+    ir4 = digitalRead(7);
+    ir5 = digitalRead(4);
+    
+    int turn = 0;
+      
+  if (ir1 == 1){
+     turn = turn - 1;
+  }
+  
+  if (ir2 == 1){
+     turn = turn - 1;
+  }
+  
+    
+  if (ir3 == 1 and ir2 == ir4){
+     turn = 0;
+  }
+  
+    if (ir4 == 1){
+     turn = turn + 1;
+  }
+  
+  if (ir5 == 1){
+     turn = turn + 1;
+  }
+     
+  int leftSpeed = 135 + 30 * turn;
+  int rightSpeed = 135 - 30 * turn;
+  
+  analogWrite(6, leftSpeed);
+  analogWrite(5, rightSpeed);
+  
+  delay(10);
+  
+}
